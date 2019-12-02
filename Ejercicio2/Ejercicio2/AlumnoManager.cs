@@ -61,7 +61,7 @@ namespace Ejercicio2
                         using(IDbCommand cmd = conn.CreateCommand())
                         {
                             cmd.Transaction = trx;
-
+                            //ni idea
                             cmd.CommandText = "INSERT INTO alumno(num_matricula, dni, nombre) VALUES(@num_matricula, @dni, @nombre)";
 
                             CreateParameter(cmd, "num_matricula", alumno.num_matricula);
