@@ -54,15 +54,33 @@ namespace Ejercicio2
         {
             using (IDbConnection conn = CreateConnection())
             {
-                using (IDbCommand cmd = conn.CreateCommand())
+                using (IDbTransaction trx = conn.BeginTransaction())
                 {
-                    cmd.CommandText = "INSERT INTO profesor(dni, nombre, domicilio) VALUES(@DNI, @Nombre, @Domicilio)";
+                    try
+                    {
+                        using (IDbCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.Transaction = trx;
+                            //ni idea
+                            cmd.CommandText = "INSERT INTO profesor(dni, nombre, domicilio) VALUES(@DNI, @Nombre, @Domicilio)";
 
-                    CreateParameter(cmd, "dni", profesor.DNI);
-                    CreateParameter(cmd, "nombre", profesor.Nombre);
-                    CreateParameter(cmd, "domicilio", profesor.Domicilio);
+                            CreateParameter(cmd, "dni", profesor.DNI);
+                            CreateParameter(cmd, "nombre", profesor.Nombre);
+                            CreateParameter(cmd, "domicilio", profesor.Domicilio);
 
-                    cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
+
+                            cmd.CommandText = "INSERT INTO logs(action, createDate) VALUES(@action, @createDate)";
+                            CreateParameter(cmd, "action", "New alumno created");
+                            CreateParameter(cmd, "createDate", DateTime.Now);
+                            cmd.ExecuteNonQuery();
+                        }
+                        trx.Commit();
+                    }
+                    catch
+                    {
+                        trx.Rollback();
+                    }
                 }
             }
         }
