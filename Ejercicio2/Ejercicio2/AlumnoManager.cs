@@ -62,9 +62,8 @@ namespace Ejercicio2
                         {
                             cmd.Transaction = trx;
 
-                            cmd.CommandText = "INSERT INTO alumno(num_matricula, dni, nombre) VALUES(@Num_Matricula, @Dni, @Nombre)";
+                            cmd.CommandText = "INSERT INTO alumno(dni, nombre) VALUES (@Dni, @Nombre)";
 
-                            CreateParameter(cmd, "num_matricula", alumno.Num_Matricula);
                             CreateParameter(cmd, "dni", alumno.Dni);
                             CreateParameter(cmd, "nombre", alumno.Nombre);
 

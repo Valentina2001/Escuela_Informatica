@@ -31,6 +31,11 @@ namespace Ejercicio2
             form.Show();
         }
 
-        
+        private void btnTribunal_Click(object sender, EventArgs e)
+        {
+            FormTribunales form = new FormTribunales();
+            this.Dispose(false);
+            form.Show();
+        }
     }
 }

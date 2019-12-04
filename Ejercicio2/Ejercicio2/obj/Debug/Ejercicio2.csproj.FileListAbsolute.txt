@@ -7,3 +7,4 @@ C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\Backup\Escuela_In
 C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\Backup\Escuela_Informatica\Ejercicio2\Ejercicio2\obj\Debug\Ejercicio2.csproj.GenerateResource.cache
 C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\Backup\Escuela_Informatica\Ejercicio2\Ejercicio2\obj\Debug\Ejercicio2.exe
 C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\Backup\Escuela_Informatica\Ejercicio2\Ejercicio2\obj\Debug\Ejercicio2.pdb
+C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\Backup\Escuela_Informatica\Ejercicio2\Ejercicio2\obj\Debug\Ejercicio2.FormTribunales.resources

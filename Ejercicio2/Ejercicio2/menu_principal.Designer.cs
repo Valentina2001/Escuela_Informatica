@@ -86,6 +86,7 @@
             this.btnTribunal.TabIndex = 4;
             this.btnTribunal.Text = "Ver Tribunal";
             this.btnTribunal.UseVisualStyleBackColor = true;
+            this.btnTribunal.Click += new System.EventHandler(this.btnTribunal_Click);
             // 
             // btnGrupo
             // 

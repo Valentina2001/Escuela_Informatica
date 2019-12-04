@@ -32,7 +32,7 @@ namespace Ejercicio2
             {
                 using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT num, lugar_examen, num_componentes FROM Ejercicio2";
+                    cmd.CommandText = "SELECT num, lugar_examen, num_componentes FROM tribunal";
                     using (IDataReader dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
@@ -48,6 +48,40 @@ namespace Ejercicio2
                 }
             }
             return tribunales;
+        }
+
+        public void Write(Tribunal tribunal)
+        {
+            using (IDbConnection conn = CreateConnection())
+            {
+                using (IDbTransaction trx = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        using(IDbCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.Transaction = trx;
+
+                            cmd.CommandText = "INSERT INTO tribunal(lugar_examen, num_componentes) VALUES(@Lugar_Examen, @Num_Componentes)";
+
+                            CreateParameter(cmd, "Lugar_Examen", tribunal.Lugar_Examen);
+                            CreateParameter(cmd, "Num_Componentes", tribunal.Num_Componentes);
+
+                            cmd.ExecuteNonQuery();
+
+                            cmd.CommandText = "INSERT INTO logs(action, createDate) VALUES(@action, @createDate)";
+                            CreateParameter(cmd, "action", "New tribunal created");
+                            CreateParameter(cmd, "createDate", DateTime.Now);
+                            cmd.ExecuteNonQuery();
+                        }
+                        trx.Commit();
+                    }
+                    catch
+                    {
+                        trx.Rollback();
+                    }
+                }
+            }
         }
     }
 }
