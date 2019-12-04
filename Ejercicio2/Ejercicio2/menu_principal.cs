@@ -19,7 +19,18 @@ namespace Ejercicio2
 
         private void btnAlumno_Click(object sender, EventArgs e)
         {
-            //Aquí va le codigo el boton del Alumno
+            FormAlumnos form = new FormAlumnos();
+            this.Dispose(false);
+            form.Show();
         }
+
+        private void btnProfesor_Click(object sender, EventArgs e)
+        {
+            FormProfesores form = new FormProfesores();
+            this.Dispose(false);
+            form.Show();
+        }
+
+        
     }
 }

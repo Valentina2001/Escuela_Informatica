@@ -76,6 +76,7 @@
             this.btnProfesor.TabIndex = 3;
             this.btnProfesor.Text = "Ver Profesor";
             this.btnProfesor.UseVisualStyleBackColor = true;
+            this.btnProfesor.Click += new System.EventHandler(this.btnProfesor_Click);
             // 
             // btnTribunal
             // 

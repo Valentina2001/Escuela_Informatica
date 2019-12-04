@@ -8,8 +8,8 @@ namespace Ejercicio2
 {
     public class Alumno
     {
-        public int num_matricula { get; set; }
-        public int dni { get; set; }
-        public string nombre { get; set; }
+        public int Num_Matricula { get; set; }
+        public int Dni { get; set; }
+        public string Nombre { get; set; }
     }
 }

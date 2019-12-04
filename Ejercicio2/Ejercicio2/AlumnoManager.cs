@@ -32,16 +32,16 @@ namespace Ejercicio2
             {
                 using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT num_matricula, dni, nombre FROM Ejercicio2";
+                    cmd.CommandText = "SELECT num_matricula, dni, nombre FROM alumno";
                     using (IDataReader dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
                             alumnos.Add(new Alumno()
                             {
-                                num_matricula = Convert.ToInt32(dr["num_matricula"]),
-                                dni = Convert.ToInt32(dr["dni"]),
-                                nombre = dr["nombre"].ToString(),
+                                Num_Matricula = Convert.ToInt32(dr["num_matricula"]),
+                                Dni = Convert.ToInt32(dr["dni"]),
+                                Nombre = dr["nombre"].ToString(),
                             });
                         }
                     }
@@ -62,11 +62,11 @@ namespace Ejercicio2
                         {
                             cmd.Transaction = trx;
 
-                            cmd.CommandText = "INSERT INTO alumno(num_matricula, dni, nombre) VALUES(@num_matricula, @dni, @nombre)";
+                            cmd.CommandText = "INSERT INTO alumno(num_matricula, dni, nombre) VALUES(@Num_Matricula, @Dni, @Nombre)";
 
-                            CreateParameter(cmd, "num_matricula", alumno.num_matricula);
-                            CreateParameter(cmd, "dni", alumno.dni);
-                            CreateParameter(cmd, "nombre", alumno.nombre);
+                            CreateParameter(cmd, "num_matricula", alumno.Num_Matricula);
+                            CreateParameter(cmd, "dni", alumno.Dni);
+                            CreateParameter(cmd, "nombre", alumno.Nombre);
 
                             cmd.ExecuteNonQuery();
 
