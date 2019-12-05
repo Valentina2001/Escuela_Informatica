@@ -44,7 +44,7 @@ namespace Ejercicio2
             {
                 ListViewItem items = listTFC.Items.Add(tfc.Num_orden.ToString());
                 items.SubItems.Add(tfc.Tema);
-                items.SubItems.Add(tfc.Fecha.ToString("MM/dd/yyyy"));
+                items.SubItems.Add(tfc.Fecha);
             }
         }
 
@@ -52,9 +52,8 @@ namespace Ejercicio2
         {
             TFC tfc = new TFC()
             {
-                Num_orden = int.Parse(txtNum_orden.Text),
                 Tema = txtTema.Text,
-                Fecha = DateTime.Parse(txtFecha.Text)
+                Fecha = txtFecha.Text,
             };
             _Manager.Write(tfc);
             btnLeer_Click(this, new EventArgs());
@@ -67,7 +66,7 @@ namespace Ejercicio2
             {
                 Num_orden = int.Parse(txtNum_orden.Text),
                 Tema = txtTema.Text,
-                Fecha = DateTime.Parse(txtFecha.Text)
+                Fecha = txtFecha.Text,
             };
             _Manager.Update(tfc);
             btnLeer_Click(this, new EventArgs());

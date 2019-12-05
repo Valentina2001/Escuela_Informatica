@@ -10,6 +10,8 @@ namespace Ejercicio2
     {
         public int Num_orden { get; set; }
         public string Tema { get; set; }
-        public DateTime Fecha { get; set; }
-    }
+        public string Fecha { get; set; }
+
+
+    }   
 }

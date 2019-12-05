@@ -41,7 +41,7 @@ namespace Ejercicio2
                             {
                                 Num_orden = Convert.ToInt32(dr["num_orden"]),
                                 Tema = dr["tema"].ToString(),
-                                Fecha = Convert.ToDateTime(dr["fecha"]),
+                                Fecha = dr["fecha"].ToString(),
                             });
                         }
                     }
@@ -62,16 +62,15 @@ namespace Ejercicio2
                         {
                             cmd.Transaction = trx;
 
-                            cmd.CommandText = "INSERT INTO TFC(num_orden, tema, fecha) VALUES(@Num_orden, @Tema, @Fecha)";
+                            cmd.CommandText = "INSERT INTO TFC(tema, fecha) VALUES(@Tema, @Fecha)";
 
-                            CreateParameter(cmd, "num_orden", tfc.Num_orden);
                             CreateParameter(cmd, "tema", tfc.Tema);
                             CreateParameter(cmd, "fecha", tfc.Fecha);
 
                             cmd.ExecuteNonQuery();
 
                             cmd.CommandText = "INSERT INTO logs(action, createDate) VALUES(@action, @createDate)";
-                            CreateParameter(cmd, "action", "New alumno created");
+                            CreateParameter(cmd, "action", "New TFC created");
                             CreateParameter(cmd, "createDate", DateTime.Now);
                             cmd.ExecuteNonQuery();
                         }
@@ -108,7 +107,7 @@ namespace Ejercicio2
             {
                 using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE * FROM TFC WHERE num_orden=@Num_orden";
+                    cmd.CommandText = "DELETE FROM TFC WHERE num_orden=@Num_orden";
                     CreateParameter(cmd, "num_orden", Num_Orden);
                     cmd.ExecuteNonQuery();
                 }
