@@ -34,6 +34,16 @@
             this.colNombre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnReadAlmno = new System.Windows.Forms.Button();
+            this.txtNumMatricula = new System.Windows.Forms.TextBox();
+            this.lblNumMatricula = new System.Windows.Forms.Label();
+            this.lblDNI = new System.Windows.Forms.Label();
+            this.txtDNI = new System.Windows.Forms.TextBox();
+            this.lblNombreAlumno = new System.Windows.Forms.Label();
+            this.txtNombreAlumno = new System.Windows.Forms.TextBox();
+            this.btnAgregarAlumno = new System.Windows.Forms.Button();
+            this.btnActualizarAlumno = new System.Windows.Forms.Button();
+            this.btnEliminarAlumno = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listAlumno
@@ -43,27 +53,28 @@
             this.colDNI,
             this.colNombre});
             this.listAlumno.HideSelection = false;
-            this.listAlumno.Location = new System.Drawing.Point(123, 98);
+            this.listAlumno.Location = new System.Drawing.Point(122, 95);
             this.listAlumno.Name = "listAlumno";
             this.listAlumno.Size = new System.Drawing.Size(527, 107);
             this.listAlumno.TabIndex = 0;
             this.listAlumno.UseCompatibleStateImageBehavior = false;
             this.listAlumno.View = System.Windows.Forms.View.Details;
+            this.listAlumno.SelectedIndexChanged += new System.EventHandler(this.listAlumno_SelectedIndexChanged);
             // 
             // colNumMatricula
             // 
             this.colNumMatricula.Text = "Numero matricula";
-            this.colNumMatricula.Width = 141;
+            this.colNumMatricula.Width = 140;
             // 
             // colDNI
             // 
             this.colDNI.Text = "DNI";
-            this.colDNI.Width = 141;
+            this.colDNI.Width = 161;
             // 
             // colNombre
             // 
             this.colNombre.Text = "Nombre alumno";
-            this.colNombre.Width = 241;
+            this.colNombre.Width = 216;
             // 
             // lblTitulo
             // 
@@ -85,15 +96,113 @@
             this.btnReadAlmno.UseVisualStyleBackColor = true;
             this.btnReadAlmno.Click += new System.EventHandler(this.btnReadAlmno_Click);
             // 
-            // menu_alumnos
+            // txtNumMatricula
+            // 
+            this.txtNumMatricula.Location = new System.Drawing.Point(214, 247);
+            this.txtNumMatricula.Name = "txtNumMatricula";
+            this.txtNumMatricula.Size = new System.Drawing.Size(249, 20);
+            this.txtNumMatricula.TabIndex = 3;
+            // 
+            // lblNumMatricula
+            // 
+            this.lblNumMatricula.AutoSize = true;
+            this.lblNumMatricula.Location = new System.Drawing.Point(119, 250);
+            this.lblNumMatricula.Name = "lblNumMatricula";
+            this.lblNumMatricula.Size = new System.Drawing.Size(89, 13);
+            this.lblNumMatricula.TabIndex = 4;
+            this.lblNumMatricula.Text = "Numero matricula";
+            // 
+            // lblDNI
+            // 
+            this.lblDNI.AutoSize = true;
+            this.lblDNI.Location = new System.Drawing.Point(119, 281);
+            this.lblDNI.Name = "lblDNI";
+            this.lblDNI.Size = new System.Drawing.Size(26, 13);
+            this.lblDNI.TabIndex = 6;
+            this.lblDNI.Text = "DNI";
+            // 
+            // txtDNI
+            // 
+            this.txtDNI.Location = new System.Drawing.Point(214, 278);
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Size = new System.Drawing.Size(249, 20);
+            this.txtDNI.TabIndex = 5;
+            // 
+            // lblNombreAlumno
+            // 
+            this.lblNombreAlumno.AutoSize = true;
+            this.lblNombreAlumno.Location = new System.Drawing.Point(119, 314);
+            this.lblNombreAlumno.Name = "lblNombreAlumno";
+            this.lblNombreAlumno.Size = new System.Drawing.Size(81, 13);
+            this.lblNombreAlumno.TabIndex = 8;
+            this.lblNombreAlumno.Text = "Nombre alumno";
+            // 
+            // txtNombreAlumno
+            // 
+            this.txtNombreAlumno.Location = new System.Drawing.Point(214, 311);
+            this.txtNombreAlumno.Name = "txtNombreAlumno";
+            this.txtNombreAlumno.Size = new System.Drawing.Size(249, 20);
+            this.txtNombreAlumno.TabIndex = 7;
+            // 
+            // btnAgregarAlumno
+            // 
+            this.btnAgregarAlumno.Location = new System.Drawing.Point(530, 243);
+            this.btnAgregarAlumno.Name = "btnAgregarAlumno";
+            this.btnAgregarAlumno.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregarAlumno.TabIndex = 9;
+            this.btnAgregarAlumno.Text = "Agregar";
+            this.btnAgregarAlumno.UseVisualStyleBackColor = true;
+            this.btnAgregarAlumno.Click += new System.EventHandler(this.btnAgregarAlumno_Click);
+            // 
+            // btnActualizarAlumno
+            // 
+            this.btnActualizarAlumno.Location = new System.Drawing.Point(530, 281);
+            this.btnActualizarAlumno.Name = "btnActualizarAlumno";
+            this.btnActualizarAlumno.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizarAlumno.TabIndex = 10;
+            this.btnActualizarAlumno.Text = "Actualizar";
+            this.btnActualizarAlumno.UseVisualStyleBackColor = true;
+            this.btnActualizarAlumno.Click += new System.EventHandler(this.btnActualizarAlumno_Click);
+            // 
+            // btnEliminarAlumno
+            // 
+            this.btnEliminarAlumno.Location = new System.Drawing.Point(530, 314);
+            this.btnEliminarAlumno.Name = "btnEliminarAlumno";
+            this.btnEliminarAlumno.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarAlumno.TabIndex = 11;
+            this.btnEliminarAlumno.Text = "Eliminar";
+            this.btnEliminarAlumno.UseVisualStyleBackColor = true;
+            this.btnEliminarAlumno.Click += new System.EventHandler(this.btnEliminarAlumno_Click);
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Location = new System.Drawing.Point(574, 66);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(75, 23);
+            this.btnVolver.TabIndex = 12;
+            this.btnVolver.Text = "Volver inicio";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // FormAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnVolver);
+            this.Controls.Add(this.btnEliminarAlumno);
+            this.Controls.Add(this.btnActualizarAlumno);
+            this.Controls.Add(this.btnAgregarAlumno);
+            this.Controls.Add(this.lblNombreAlumno);
+            this.Controls.Add(this.txtNombreAlumno);
+            this.Controls.Add(this.lblDNI);
+            this.Controls.Add(this.txtDNI);
+            this.Controls.Add(this.lblNumMatricula);
+            this.Controls.Add(this.txtNumMatricula);
             this.Controls.Add(this.btnReadAlmno);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.listAlumno);
-            this.Name = "menu_alumnos";
+            this.Name = "FormAlumnos";
             this.Text = "Menu Alumnos";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -108,5 +217,15 @@
         private System.Windows.Forms.ColumnHeader colNombre;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnReadAlmno;
+        private System.Windows.Forms.TextBox txtNumMatricula;
+        private System.Windows.Forms.Label lblNumMatricula;
+        private System.Windows.Forms.Label lblDNI;
+        private System.Windows.Forms.TextBox txtDNI;
+        private System.Windows.Forms.Label lblNombreAlumno;
+        private System.Windows.Forms.TextBox txtNombreAlumno;
+        private System.Windows.Forms.Button btnAgregarAlumno;
+        private System.Windows.Forms.Button btnActualizarAlumno;
+        private System.Windows.Forms.Button btnEliminarAlumno;
+        private System.Windows.Forms.Button btnVolver;
     }
 }

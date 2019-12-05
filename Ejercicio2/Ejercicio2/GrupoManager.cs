@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio2
 {
-    public class TribunalManager
+    public class GrupoManager
     {
         private IDbConnection CreateConnection()
         {
@@ -16,7 +16,6 @@ namespace Ejercicio2
             conn.Open();
             return conn;
         }
-
         private void CreateParameter<T>(IDbCommand cmd, string name, T value)
         {
             IDbDataParameter prm = cmd.CreateParameter();
@@ -24,33 +23,32 @@ namespace Ejercicio2
             prm.Value = value;
             cmd.Parameters.Add(prm);
         }
-
-        public List<Tribunal> GetTribunales()
+        public List<Grupo> GetGrupos()
         {
-            List<Tribunal> tribunales = new List<Tribunal>();
+            List<Grupo> grupos = new List<Grupo>();
             using (IDbConnection conn = CreateConnection())
             {
                 using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT num, lugar_examen, num_componentes FROM tribunal";
+                    cmd.CommandText = "SELECT num_grupo, nombre, num_componente FROM grupo";
                     using (IDataReader dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
-                            tribunales.Add(new Tribunal()
+                            grupos.Add(new Grupo()
                             {
-                                Num = Convert.ToInt32(dr["num"]),
-                                Lugar_Examen = dr["lugar_examen"].ToString(),
-                                Num_Componentes = Convert.ToInt32(dr["num_componentes"]),
+                                Num_grupo = Convert.ToInt32(dr["num_grupo"]),
+                                Nombre = dr["nombre"].ToString(),
+                                Num_componente = Convert.ToInt32(dr["num_componente"])
                             });
                         }
                     }
                 }
             }
-            return tribunales;
+            return grupos;
         }
 
-        public void Write(Tribunal tribunal)
+        public void Write(Grupo grupo)
         {
             using (IDbConnection conn = CreateConnection())
             {
@@ -58,19 +56,19 @@ namespace Ejercicio2
                 {
                     try
                     {
-                        using(IDbCommand cmd = conn.CreateCommand())
+                        using (IDbCommand cmd = conn.CreateCommand())
                         {
                             cmd.Transaction = trx;
 
-                            cmd.CommandText = "INSERT INTO tribunal(lugar_examen, num_componentes) VALUES(@Lugar_Examen, @Num_Componentes)";
+                            cmd.CommandText = "INSERT INTO grupo(nombre, num_componente) VALUES (@Nombre, @Num_componente)";
 
-                            CreateParameter(cmd, "Lugar_Examen", tribunal.Lugar_Examen);
-                            CreateParameter(cmd, "Num_Componentes", tribunal.Num_Componentes);
+                            CreateParameter(cmd, "nombre", grupo.Nombre);
+                            CreateParameter(cmd, "num_componente", grupo.Num_componente);
 
                             cmd.ExecuteNonQuery();
 
                             cmd.CommandText = "INSERT INTO logs(action, createDate) VALUES(@action, @createDate)";
-                            CreateParameter(cmd, "action", "New tribunal created");
+                            CreateParameter(cmd, "action", "New grupo created");
                             CreateParameter(cmd, "createDate", DateTime.Now);
                             cmd.ExecuteNonQuery();
                         }
@@ -84,31 +82,31 @@ namespace Ejercicio2
             }
         }
 
-        public void Update(Tribunal tribunal)
+        internal void Delete(int Num_grupo)
         {
-            using(IDbConnection conn = CreateConnection())
+            using (IDbConnection conn = CreateConnection())
             {
-                using(IDbCommand cmd = conn.CreateCommand())
+                using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "UPDATE Tribunal SET lugar_examen=@Lugar_Examen, num_componentes=@Num_Componentes WHERE num=@Num";
-
-                    CreateParameter(cmd, "Num", tribunal.Num);
-                    CreateParameter(cmd, "Lugar_Examen", tribunal.Lugar_Examen);
-                    CreateParameter(cmd, "Num_Componentes", tribunal.Num_Componentes);
-
+                    cmd.CommandText = "DELETE FROM grupo WHERE num_grupo=@Num_grupo";
+                    CreateParameter(cmd, "num_grupo", Num_grupo);
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public void Delete(int Num)
+        public void Update(Grupo grupo)
         {
-            using(IDbConnection conn = CreateConnection())
+            using (IDbConnection conn = CreateConnection())
             {
-                using(IDbCommand cmd = conn.CreateCommand())
+                using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM Tribunal WHERE num=@Num";
-                    CreateParameter(cmd, "num", Num);
+                    cmd.CommandText = "UPDATE grupo SET nombre=@Nombre num_componente=@Num_componente WHERE num_grupo=@Num_grupo";
+
+                    CreateParameter(cmd, "num_grupo", grupo.Num_grupo);
+                    CreateParameter(cmd, "nombre", grupo.Nombre);
+                    CreateParameter(cmd, "num_componente", grupo.Num_componente);
+
                     cmd.ExecuteNonQuery();
                 }
             }

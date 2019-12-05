@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio2
 {
-    public class TribunalManager
+    class TfcManager
     {
         private IDbConnection CreateConnection()
         {
@@ -25,32 +25,32 @@ namespace Ejercicio2
             cmd.Parameters.Add(prm);
         }
 
-        public List<Tribunal> GetTribunales()
+        public List<TFC> GetTfc()
         {
-            List<Tribunal> tribunales = new List<Tribunal>();
+            List<TFC> tfc = new List<TFC>();
             using (IDbConnection conn = CreateConnection())
             {
                 using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT num, lugar_examen, num_componentes FROM tribunal";
+                    cmd.CommandText = "SELECT num_orden, tema, fecha FROM TFC";
                     using (IDataReader dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
-                            tribunales.Add(new Tribunal()
+                            tfc.Add(new TFC()
                             {
-                                Num = Convert.ToInt32(dr["num"]),
-                                Lugar_Examen = dr["lugar_examen"].ToString(),
-                                Num_Componentes = Convert.ToInt32(dr["num_componentes"]),
+                                Num_orden = Convert.ToInt32(dr["num_orden"]),
+                                Tema = dr["tema"].ToString(),
+                                Fecha = Convert.ToDateTime(dr["fecha"]),
                             });
                         }
                     }
                 }
             }
-            return tribunales;
+            return tfc;
         }
 
-        public void Write(Tribunal tribunal)
+        public void Write(TFC tfc)
         {
             using (IDbConnection conn = CreateConnection())
             {
@@ -58,19 +58,20 @@ namespace Ejercicio2
                 {
                     try
                     {
-                        using(IDbCommand cmd = conn.CreateCommand())
+                        using (IDbCommand cmd = conn.CreateCommand())
                         {
                             cmd.Transaction = trx;
 
-                            cmd.CommandText = "INSERT INTO tribunal(lugar_examen, num_componentes) VALUES(@Lugar_Examen, @Num_Componentes)";
+                            cmd.CommandText = "INSERT INTO TFC(num_orden, tema, fecha) VALUES(@Num_orden, @Tema, @Fecha)";
 
-                            CreateParameter(cmd, "Lugar_Examen", tribunal.Lugar_Examen);
-                            CreateParameter(cmd, "Num_Componentes", tribunal.Num_Componentes);
+                            CreateParameter(cmd, "num_orden", tfc.Num_orden);
+                            CreateParameter(cmd, "tema", tfc.Tema);
+                            CreateParameter(cmd, "fecha", tfc.Fecha);
 
                             cmd.ExecuteNonQuery();
 
                             cmd.CommandText = "INSERT INTO logs(action, createDate) VALUES(@action, @createDate)";
-                            CreateParameter(cmd, "action", "New tribunal created");
+                            CreateParameter(cmd, "action", "New alumno created");
                             CreateParameter(cmd, "createDate", DateTime.Now);
                             cmd.ExecuteNonQuery();
                         }
@@ -84,31 +85,31 @@ namespace Ejercicio2
             }
         }
 
-        public void Update(Tribunal tribunal)
+        public void Update(TFC tfc)
         {
-            using(IDbConnection conn = CreateConnection())
+            using (IDbConnection conn = CreateConnection())
             {
-                using(IDbCommand cmd = conn.CreateCommand())
+                using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "UPDATE Tribunal SET lugar_examen=@Lugar_Examen, num_componentes=@Num_Componentes WHERE num=@Num";
+                    cmd.CommandText = "UPDATE TFC SET tema=@Tema, fecha=@Fecha WHERE num_orden=@Num_orden";
 
-                    CreateParameter(cmd, "Num", tribunal.Num);
-                    CreateParameter(cmd, "Lugar_Examen", tribunal.Lugar_Examen);
-                    CreateParameter(cmd, "Num_Componentes", tribunal.Num_Componentes);
+                    CreateParameter(cmd, "num_orden", tfc.Num_orden);
+                    CreateParameter(cmd, "tema", tfc.Tema);
+                    CreateParameter(cmd, "fecha", tfc.Fecha);
 
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public void Delete(int Num)
+        public void Delete(int Num_Orden)
         {
-            using(IDbConnection conn = CreateConnection())
+            using (IDbConnection conn = CreateConnection())
             {
-                using(IDbCommand cmd = conn.CreateCommand())
+                using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM Tribunal WHERE num=@Num";
-                    CreateParameter(cmd, "num", Num);
+                    cmd.CommandText = "DELETE * FROM TFC WHERE num_orden=@Num_orden";
+                    CreateParameter(cmd, "num_orden", Num_Orden);
                     cmd.ExecuteNonQuery();
                 }
             }

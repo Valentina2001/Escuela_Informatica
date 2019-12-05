@@ -37,5 +37,19 @@ namespace Ejercicio2
             this.Dispose(false);
             form.Show();
         }
+
+        private void btnTfc_Click(object sender, EventArgs e)
+        {
+            FormTfc form = new FormTfc();
+            this.Dispose(false);
+            form.Show();
+        }
+
+        private void btnGrupo_Click(object sender, EventArgs e)
+        {
+            FormGrupos form = new FormGrupos();
+            this.Dispose(false);
+            form.Show();
+        }
     }
 }

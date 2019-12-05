@@ -54,5 +54,37 @@ namespace Ejercicio2
             this.Dispose(false);
             form.Show();
         }
+
+        private void btnAgregarTribunal_Click(object sender, EventArgs e)
+        {
+            Tribunal tribunal = new Tribunal()
+            {
+                Lugar_Examen = txtLugarExamen.Text,
+                Num_Componentes = int.Parse(txtNumComponentes.Text),
+            };
+            _Manager.Write(tribunal);
+            btnLeerTribunal_Click(this, new EventArgs());
+            LimpiarTexto();
+        }
+
+        private void btnActualizarTribunal_Click(object sender, EventArgs e)
+        {
+            Tribunal tribunal = new Tribunal()
+            {
+                Num = int.Parse(txtNumTribunal.Text),
+                Lugar_Examen = txtLugarExamen.Text,
+                Num_Componentes = int.Parse(txtNumComponentes.Text),
+            };
+            _Manager.Update(tribunal);
+            btnLeerTribunal_Click(this, new EventArgs());
+            LimpiarTexto();
+        }
+
+        private void btnEliminarTribunal_Click(object sender, EventArgs e)
+        {
+            _Manager.Delete(int.Parse(txtNumTribunal.Text));
+            btnLeerTribunal_Click(this, new EventArgs());
+            LimpiarTexto();
+        }
     }
 }

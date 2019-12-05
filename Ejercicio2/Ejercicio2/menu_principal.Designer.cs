@@ -96,6 +96,7 @@
             this.btnGrupo.TabIndex = 5;
             this.btnGrupo.Text = "Ver Grupo";
             this.btnGrupo.UseVisualStyleBackColor = true;
+            this.btnGrupo.Click += new System.EventHandler(this.btnGrupo_Click);
             // 
             // btnTfc
             // 
@@ -105,6 +106,7 @@
             this.btnTfc.TabIndex = 6;
             this.btnTfc.Text = "Ver TFC";
             this.btnTfc.UseVisualStyleBackColor = true;
+            this.btnTfc.Click += new System.EventHandler(this.btnTfc_Click);
             // 
             // labelOpcion
             // 

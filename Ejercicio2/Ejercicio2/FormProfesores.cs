@@ -57,6 +57,47 @@ namespace Ejercicio2
                 item.SubItems.Add(profesor.Domicilio);
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Profesor profesor = new Profesor()
+            {
+                DNI = int.Parse(txtDNI.Text),
+                Nombre = txtNombre.Text,
+                Domicilio = txtDomicilio.Text
+            };
+            _Manager.Write(profesor);
+            button1_Click(this, new EventArgs());
+            LimpiarTexto();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            Profesor profesor = new Profesor()
+            {
+                DNI = int.Parse(txtDNI.Text),
+                Nombre = txtNombre.Text,
+                Domicilio = txtDomicilio.Text
+            };
+            _Manager.Update(profesor);
+            button1_Click(this, new EventArgs());
+            LimpiarTexto();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            _Manager.Delete(int.Parse(txtDNI.Text));
+            button1_Click(this, new EventArgs());
+            LimpiarTexto();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            menu_principal principal = new menu_principal();
+            principal.Show();
+            this.Hide();
+        }
     }
 }
+
 

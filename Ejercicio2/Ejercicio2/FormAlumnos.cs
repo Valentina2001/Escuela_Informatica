@@ -47,6 +47,52 @@ namespace Ejercicio2
                 item.SubItems.Add(alumno.Nombre);
             }
         }
+
+        private void listAlumno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarAlumno_Click(object sender, EventArgs e)
+        {
+            Alumno alumno = new Alumno()
+            {
+                Dni = int.Parse(txtDNI.Text),
+                Nombre = txtNombreAlumno.Text
+            };
+            _Manager.Write(alumno);
+            LimpiarTexto();
+            btnReadAlmno_Click(this, new EventArgs());
+        }
+
+        private void btnActualizarAlumno_Click(object sender, EventArgs e)
+        {
+            Alumno alumno = new Alumno()
+            {
+                Num_Matricula = int.Parse(txtNumMatricula.Text),
+                Dni = int.Parse(txtDNI.Text),
+                Nombre = txtNombreAlumno.Text
+            };
+            _Manager.Update(alumno);
+            btnReadAlmno_Click(this, new EventArgs());
+            LimpiarTexto();
+        }
+
+        private void btnEliminarAlumno_Click(object sender, EventArgs e)
+        {
+            _Manager.Delete(int.Parse(txtNumMatricula.Text));
+            btnReadAlmno_Click(this, new EventArgs());
+            LimpiarTexto();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            menu_principal principal = new menu_principal();
+            principal.Show();
+            this.Hide();
+        }
     }
 }
+
+
 

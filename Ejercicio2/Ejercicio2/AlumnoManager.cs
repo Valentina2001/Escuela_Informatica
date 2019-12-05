@@ -23,7 +23,7 @@ namespace Ejercicio2
             prm.ParameterName = name;
             prm.Value = value;
             cmd.Parameters.Add(prm);
-        } 
+        }
 
         public List<Alumno> GetAlumnos()
         {
@@ -54,11 +54,11 @@ namespace Ejercicio2
         {
             using (IDbConnection conn = CreateConnection())
             {
-                using(IDbTransaction trx = conn.BeginTransaction())
+                using (IDbTransaction trx = conn.BeginTransaction())
                 {
                     try
                     {
-                        using(IDbCommand cmd = conn.CreateCommand())
+                        using (IDbCommand cmd = conn.CreateCommand())
                         {
                             cmd.Transaction = trx;
 
@@ -72,7 +72,7 @@ namespace Ejercicio2
                             cmd.CommandText = "INSERT INTO logs(action, createDate) VALUES(@action, @createDate)";
                             CreateParameter(cmd, "action", "New alumno created");
                             CreateParameter(cmd, "createDate", DateTime.Now);
-                            cmd.ExecuteNonQuery(); 
+                            cmd.ExecuteNonQuery();
                         }
                         trx.Commit();
                     }
@@ -83,5 +83,36 @@ namespace Ejercicio2
                 }
             }
         }
+
+        public void Update(Alumno alumno)
+        {
+            using (IDbConnection conn = CreateConnection())
+            {
+                using (IDbCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE Alumno SET dni=@Dni, nombre=@Nombre WHERE num_matricula=@Num_Matricula";
+
+                    CreateParameter(cmd, "Num_Matricula", alumno.Num_Matricula);
+                    CreateParameter(cmd, "Dni", alumno.Dni);
+                    CreateParameter(cmd, "Nombre", alumno.Nombre);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Delete(int Num_Matricula)
+        {
+            using (IDbConnection conn = CreateConnection())
+            {
+                using (IDbCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Alumno WHERE num_matricula=@Num_Matricula";
+                    CreateParameter(cmd, "num_matricula", Num_Matricula);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
