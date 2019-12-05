@@ -16,6 +16,7 @@ namespace Ejercicio2
         public FormGrupos()
         {
             InitializeComponent();
+            Init();
         }
 
         private void Init()
