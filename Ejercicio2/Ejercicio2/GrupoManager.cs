@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,7 +38,7 @@ namespace Ejercicio2
                             grupos.Add(new Grupo()
                             {
                                 Num_grupo = Convert.ToInt32(dr["num_grupo"]),
-                                Nombre = dr["nombre"].ToString(),
+                                Nombre_grupo = dr["nombre"].ToString(),
                                 Num_componente = Convert.ToInt32(dr["num_componente"])
                             });
                         }
@@ -59,14 +59,11 @@ namespace Ejercicio2
                         using (IDbCommand cmd = conn.CreateCommand())
                         {
                             cmd.Transaction = trx;
-
-                            cmd.CommandText = "INSERT INTO grupo(nombre, num_componente) VALUES (@Nombre, @Num_componente)";
-
-                            CreateParameter(cmd, "nombre", grupo.Nombre);
-                            CreateParameter(cmd, "num_componente", grupo.Num_componente);
+                            cmd.CommandText = "INSERT INTO grupo(nombre, num_componente) VALUES (@Nombre_grupo, @Num_componente)";
+                            CreateParameter(cmd, "Nombre_grupo", grupo.Nombre_grupo);
+                            CreateParameter(cmd, "Num_componente", grupo.Num_componente);
 
                             cmd.ExecuteNonQuery();
-
                             cmd.CommandText = "INSERT INTO logs(action, createDate) VALUES(@action, @createDate)";
                             CreateParameter(cmd, "action", "New grupo created");
                             CreateParameter(cmd, "createDate", DateTime.Now);
@@ -82,14 +79,14 @@ namespace Ejercicio2
             }
         }
 
-        internal void Delete(int Num_grupo)
+        public void Delete(int num_grupo)
         {
             using (IDbConnection conn = CreateConnection())
             {
                 using (IDbCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM grupo WHERE num_grupo=@Num_grupo";
-                    CreateParameter(cmd, "num_grupo", Num_grupo);
+                    CreateParameter(cmd, "Num_grupo", num_grupo);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -101,11 +98,11 @@ namespace Ejercicio2
             {
                 using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "UPDATE grupo SET nombre=@Nombre num_componente=@Num_componente WHERE num_grupo=@Num_grupo";
+                    cmd.CommandText = "UPDATE Grupo SET nombre=@Nombre_grupo, num_componente=@Num_componente WHERE num_grupo=@Num_grupo";
 
-                    CreateParameter(cmd, "num_grupo", grupo.Num_grupo);
-                    CreateParameter(cmd, "nombre", grupo.Nombre);
-                    CreateParameter(cmd, "num_componente", grupo.Num_componente);
+                    CreateParameter(cmd, "Num_grupo", grupo.Num_grupo);
+                    CreateParameter(cmd, "Nombre_grupo", grupo.Nombre_grupo);
+                    CreateParameter(cmd, "Num_componente", grupo.Num_componente);
 
                     cmd.ExecuteNonQuery();
                 }

@@ -60,7 +60,7 @@
             // 
             // btnAlumno
             // 
-            this.btnAlumno.Location = new System.Drawing.Point(14, 264);
+            this.btnAlumno.Location = new System.Drawing.Point(143, 264);
             this.btnAlumno.Name = "btnAlumno";
             this.btnAlumno.Size = new System.Drawing.Size(150, 32);
             this.btnAlumno.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             // btnProfesor
             // 
-            this.btnProfesor.Location = new System.Drawing.Point(170, 264);
+            this.btnProfesor.Location = new System.Drawing.Point(143, 342);
             this.btnProfesor.Name = "btnProfesor";
             this.btnProfesor.Size = new System.Drawing.Size(150, 32);
             this.btnProfesor.TabIndex = 3;
@@ -90,7 +90,7 @@
             // 
             // btnGrupo
             // 
-            this.btnGrupo.Location = new System.Drawing.Point(482, 264);
+            this.btnGrupo.Location = new System.Drawing.Point(326, 342);
             this.btnGrupo.Name = "btnGrupo";
             this.btnGrupo.Size = new System.Drawing.Size(150, 32);
             this.btnGrupo.TabIndex = 5;
@@ -100,7 +100,7 @@
             // 
             // btnTfc
             // 
-            this.btnTfc.Location = new System.Drawing.Point(638, 264);
+            this.btnTfc.Location = new System.Drawing.Point(504, 305);
             this.btnTfc.Name = "btnTfc";
             this.btnTfc.Size = new System.Drawing.Size(150, 32);
             this.btnTfc.TabIndex = 6;

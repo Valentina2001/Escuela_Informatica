@@ -19,11 +19,10 @@ namespace Ejercicio2
             Init();
         }
 
-        private void Init()
+        public void Init()
         {
             _Manager = new GrupoManager();
         }
-
         public void LimpiarTexto()
         {
             foreach (Control ctrl in this.Controls)
@@ -40,32 +39,31 @@ namespace Ejercicio2
         {
             listGrupos.Items.Clear();
             List<Grupo> grupos = _Manager.GetGrupos();
-            foreach (Grupo grupo in grupos)
+            foreach(Grupo grupo in grupos)
             {
                 ListViewItem item = listGrupos.Items.Add(grupo.Num_grupo.ToString());
-                item.SubItems.Add(grupo.Nombre);
+                item.SubItems.Add(grupo.Nombre_grupo);
                 item.SubItems.Add(grupo.Num_componente.ToString());
             }
         }
 
-        private void btnVolver_Click(object sender, EventArgs e)
+        private void btnVolverInicio_Click(object sender, EventArgs e)
         {
-            menu_principal principal = new menu_principal();
-            principal.Show();
-            this.Hide();
+            menu_principal form = new menu_principal();
+            this.Dispose(false);
+            form.Show();
         }
 
         private void btnAgregarGrupo_Click(object sender, EventArgs e)
         {
             Grupo grupo = new Grupo()
             {
-                Num_grupo = int.Parse(txtNumGrupo.Text),
-                Nombre = txtNombreGrupo.Text,
-                Num_componente = int.Parse(txtNumComponente.Text)
+                Nombre_grupo = txtNombreGrupo.Text,
+                Num_componente = int.Parse(txtNumeroComponente.Text)
             };
             _Manager.Write(grupo);
-            LimpiarTexto();
             btnLeerGrupo_Click(this, new EventArgs());
+            LimpiarTexto();
         }
 
         private void btnActualizarGrupo_Click(object sender, EventArgs e)
@@ -73,12 +71,12 @@ namespace Ejercicio2
             Grupo grupo = new Grupo()
             {
                 Num_grupo = int.Parse(txtNumGrupo.Text),
-                Nombre = txtNombreGrupo.Text,
-                Num_componente = int.Parse(txtNumComponente.Text)
+                Nombre_grupo = txtNombreGrupo.Text,
+                Num_componente = int.Parse(txtNumeroComponente.Text)
             };
             _Manager.Update(grupo);
-            LimpiarTexto();
             btnLeerGrupo_Click(this, new EventArgs());
+            LimpiarTexto();
         }
 
         private void btnEliminarGrupo_Click(object sender, EventArgs e)
