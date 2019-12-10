@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGrupos));
             this.listGrupos = new System.Windows.Forms.ListView();
-            this.btnLeerGrupo = new System.Windows.Forms.Button();
             this.colNumgrupo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colNombreGrupo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colNumComponente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnLeerGrupo = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnVolverInicio = new System.Windows.Forms.Button();
             this.txtNumGrupo = new System.Windows.Forms.TextBox();
@@ -44,6 +45,9 @@
             this.btnAgregarGrupo = new System.Windows.Forms.Button();
             this.btnActualizarGrupo = new System.Windows.Forms.Button();
             this.btnEliminarGrupo = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listGrupos
@@ -55,35 +59,35 @@
             this.listGrupos.HideSelection = false;
             this.listGrupos.Location = new System.Drawing.Point(116, 105);
             this.listGrupos.Name = "listGrupos";
-            this.listGrupos.Size = new System.Drawing.Size(542, 136);
+            this.listGrupos.Size = new System.Drawing.Size(618, 136);
             this.listGrupos.TabIndex = 0;
             this.listGrupos.UseCompatibleStateImageBehavior = false;
             this.listGrupos.View = System.Windows.Forms.View.Details;
             // 
-            // btnLeerGrupo
-            // 
-            this.btnLeerGrupo.Location = new System.Drawing.Point(116, 64);
-            this.btnLeerGrupo.Name = "btnLeerGrupo";
-            this.btnLeerGrupo.Size = new System.Drawing.Size(75, 23);
-            this.btnLeerGrupo.TabIndex = 1;
-            this.btnLeerGrupo.Text = "Leer";
-            this.btnLeerGrupo.UseVisualStyleBackColor = true;
-            this.btnLeerGrupo.Click += new System.EventHandler(this.btnLeerGrupo_Click);
-            // 
             // colNumgrupo
             // 
             this.colNumgrupo.Text = "Numero grupo";
-            this.colNumgrupo.Width = 132;
+            this.colNumgrupo.Width = 170;
             // 
             // colNombreGrupo
             // 
             this.colNombreGrupo.Text = "Nombe grupo";
-            this.colNombreGrupo.Width = 143;
+            this.colNombreGrupo.Width = 189;
             // 
             // colNumComponente
             // 
             this.colNumComponente.Text = "Numero componente";
-            this.colNumComponente.Width = 130;
+            this.colNumComponente.Width = 199;
+            // 
+            // btnLeerGrupo
+            // 
+            this.btnLeerGrupo.Image = ((System.Drawing.Image)(resources.GetObject("btnLeerGrupo.Image")));
+            this.btnLeerGrupo.Location = new System.Drawing.Point(116, 39);
+            this.btnLeerGrupo.Name = "btnLeerGrupo";
+            this.btnLeerGrupo.Size = new System.Drawing.Size(73, 60);
+            this.btnLeerGrupo.TabIndex = 1;
+            this.btnLeerGrupo.UseVisualStyleBackColor = true;
+            this.btnLeerGrupo.Click += new System.EventHandler(this.btnLeerGrupo_Click);
             // 
             // lblTitulo
             // 
@@ -97,7 +101,7 @@
             // 
             // btnVolverInicio
             // 
-            this.btnVolverInicio.Location = new System.Drawing.Point(581, 64);
+            this.btnVolverInicio.Location = new System.Drawing.Point(659, 76);
             this.btnVolverInicio.Name = "btnVolverInicio";
             this.btnVolverInicio.Size = new System.Drawing.Size(75, 23);
             this.btnVolverInicio.TabIndex = 3;
@@ -155,39 +159,69 @@
             // 
             // btnAgregarGrupo
             // 
-            this.btnAgregarGrupo.Location = new System.Drawing.Point(464, 283);
+            this.btnAgregarGrupo.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarGrupo.Image")));
+            this.btnAgregarGrupo.Location = new System.Drawing.Point(419, 301);
             this.btnAgregarGrupo.Name = "btnAgregarGrupo";
-            this.btnAgregarGrupo.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregarGrupo.Size = new System.Drawing.Size(90, 90);
             this.btnAgregarGrupo.TabIndex = 10;
-            this.btnAgregarGrupo.Text = "Agregar";
             this.btnAgregarGrupo.UseVisualStyleBackColor = true;
             this.btnAgregarGrupo.Click += new System.EventHandler(this.btnAgregarGrupo_Click);
             // 
             // btnActualizarGrupo
             // 
-            this.btnActualizarGrupo.Location = new System.Drawing.Point(464, 325);
+            this.btnActualizarGrupo.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizarGrupo.Image")));
+            this.btnActualizarGrupo.Location = new System.Drawing.Point(529, 301);
             this.btnActualizarGrupo.Name = "btnActualizarGrupo";
-            this.btnActualizarGrupo.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizarGrupo.Size = new System.Drawing.Size(93, 90);
             this.btnActualizarGrupo.TabIndex = 11;
-            this.btnActualizarGrupo.Text = "Actualizar";
             this.btnActualizarGrupo.UseVisualStyleBackColor = true;
             this.btnActualizarGrupo.Click += new System.EventHandler(this.btnActualizarGrupo_Click);
             // 
             // btnEliminarGrupo
             // 
-            this.btnEliminarGrupo.Location = new System.Drawing.Point(464, 367);
+            this.btnEliminarGrupo.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarGrupo.Image")));
+            this.btnEliminarGrupo.Location = new System.Drawing.Point(643, 301);
             this.btnEliminarGrupo.Name = "btnEliminarGrupo";
-            this.btnEliminarGrupo.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarGrupo.Size = new System.Drawing.Size(91, 90);
             this.btnEliminarGrupo.TabIndex = 12;
-            this.btnEliminarGrupo.Text = "Eliminar";
             this.btnEliminarGrupo.UseVisualStyleBackColor = true;
             this.btnEliminarGrupo.Click += new System.EventHandler(this.btnEliminarGrupo_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(664, 285);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Eliminar";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(549, 285);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Actualizar";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(443, 285);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Agregar";
             // 
             // FormGrupos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEliminarGrupo);
             this.Controls.Add(this.btnActualizarGrupo);
             this.Controls.Add(this.btnAgregarGrupo);
@@ -226,5 +260,8 @@
         private System.Windows.Forms.Button btnAgregarGrupo;
         private System.Windows.Forms.Button btnActualizarGrupo;
         private System.Windows.Forms.Button btnEliminarGrupo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

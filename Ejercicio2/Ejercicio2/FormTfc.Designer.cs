@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTfc));
             this.listTFC = new System.Windows.Forms.ListView();
             this.colNum_orden = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTema = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,6 +45,9 @@
             this.txtNum_orden = new System.Windows.Forms.TextBox();
             this.txtTema = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listTFC
@@ -56,7 +60,7 @@
             this.listTFC.HideSelection = false;
             this.listTFC.Location = new System.Drawing.Point(66, 80);
             this.listTFC.Name = "listTFC";
-            this.listTFC.Size = new System.Drawing.Size(484, 230);
+            this.listTFC.Size = new System.Drawing.Size(620, 230);
             this.listTFC.TabIndex = 0;
             this.listTFC.UseCompatibleStateImageBehavior = false;
             this.listTFC.View = System.Windows.Forms.View.Details;
@@ -69,18 +73,18 @@
             // colTema
             // 
             this.colTema.Text = "Tema";
-            this.colTema.Width = 196;
+            this.colTema.Width = 211;
             // 
             // colFecha
             // 
             this.colFecha.Text = "Fecha";
-            this.colFecha.Width = 151;
+            this.colFecha.Width = 217;
             // 
             // lblTFC
             // 
             this.lblTFC.AutoSize = true;
             this.lblTFC.Font = new System.Drawing.Font("Imprint MT Shadow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTFC.Location = new System.Drawing.Point(253, 36);
+            this.lblTFC.Location = new System.Drawing.Point(328, 36);
             this.lblTFC.Name = "lblTFC";
             this.lblTFC.Size = new System.Drawing.Size(65, 28);
             this.lblTFC.TabIndex = 1;
@@ -89,18 +93,18 @@
             // btnLeer
             // 
             this.btnLeer.Font = new System.Drawing.Font("Imprint MT Shadow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLeer.Location = new System.Drawing.Point(66, 36);
+            this.btnLeer.Image = ((System.Drawing.Image)(resources.GetObject("btnLeer.Image")));
+            this.btnLeer.Location = new System.Drawing.Point(66, 12);
             this.btnLeer.Name = "btnLeer";
-            this.btnLeer.Size = new System.Drawing.Size(75, 23);
+            this.btnLeer.Size = new System.Drawing.Size(64, 62);
             this.btnLeer.TabIndex = 2;
-            this.btnLeer.Text = "LEER";
             this.btnLeer.UseVisualStyleBackColor = true;
             this.btnLeer.Click += new System.EventHandler(this.btnLeer_Click);
             // 
             // btnVolver
             // 
             this.btnVolver.Font = new System.Drawing.Font("Imprint MT Shadow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Location = new System.Drawing.Point(475, 36);
+            this.btnVolver.Location = new System.Drawing.Point(611, 42);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
             this.btnVolver.TabIndex = 3;
@@ -111,33 +115,33 @@
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Imprint MT Shadow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(433, 328);
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
+            this.btnAgregar.Location = new System.Drawing.Point(411, 343);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(117, 28);
+            this.btnAgregar.Size = new System.Drawing.Size(92, 90);
             this.btnAgregar.TabIndex = 4;
-            this.btnAgregar.Text = "AGREGAR";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnActualizar
             // 
             this.btnActualizar.Font = new System.Drawing.Font("Imprint MT Shadow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(433, 368);
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.Location = new System.Drawing.Point(523, 343);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(117, 26);
+            this.btnActualizar.Size = new System.Drawing.Size(91, 90);
             this.btnActualizar.TabIndex = 5;
-            this.btnActualizar.Text = "ACTUALIZAR";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Imprint MT Shadow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(433, 406);
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.Location = new System.Drawing.Point(634, 343);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(117, 26);
+            this.btnEliminar.Size = new System.Drawing.Size(95, 90);
             this.btnEliminar.TabIndex = 6;
-            this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -192,11 +196,41 @@
             this.txtFecha.Size = new System.Drawing.Size(192, 20);
             this.txtFecha.TabIndex = 12;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(435, 326);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Añadir";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(541, 326);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Actualizar";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(660, 326);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Eliminar";
+            // 
             // FormTfc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 466);
+            this.ClientSize = new System.Drawing.Size(757, 466);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.txtTema);
             this.Controls.Add(this.txtNum_orden);
@@ -235,5 +269,8 @@
         private System.Windows.Forms.TextBox txtNum_orden;
         private System.Windows.Forms.TextBox txtTema;
         private System.Windows.Forms.TextBox txtFecha;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

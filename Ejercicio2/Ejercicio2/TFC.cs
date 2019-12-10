@@ -12,6 +12,5 @@ namespace Ejercicio2
         public string Tema { get; set; }
         public string Fecha { get; set; }
 
-
     }   
 }

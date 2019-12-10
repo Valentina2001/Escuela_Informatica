@@ -51,5 +51,10 @@ namespace Ejercicio2
             this.Dispose(false);
             form.Show();
         }
+
+        private void menu_principal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
